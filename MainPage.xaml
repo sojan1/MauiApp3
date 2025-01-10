@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.MainPage">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="10">
+
+
+            <!-- Label for the page title -->
+            <Label Text="Simple List"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
+            <CollectionView x:Name="itemCollectionView"  ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                                <Label Text="{Binding ItemName}" FontAttributes="Bold" />
+                                <Label Text="{Binding Description}" />
+                            <Label Text="Edit" TextColor="Blue">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                     Command="{Binding Path=BindingContext.LoadItemCommand, Source={x:Reference Name=itemCollectionView}}"
+                                     CommandParameter="{Binding .}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                           
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+ 
+            
+            <Button Text="Add Item" Command="{Binding GotoCommandPage}" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

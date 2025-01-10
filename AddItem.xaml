@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.AddItem"
+             Title="AddItem">
+    <StackLayout Padding="10">
+        <Entry Placeholder="Item Name" Text="{Binding NewItem.ItemName}" />
+        <Entry Placeholder="Description" Text="{Binding NewItem.Description}" />
+        <Button Text="Save" Command="{Binding SaveCommand}" />
+        <Button Text="Cancel" Command="{Binding CancelCommand}" />
+        
+    </StackLayout>
+</ContentPage>
