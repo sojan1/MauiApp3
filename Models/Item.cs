@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MauiApp3.Models
 {
@@ -24,7 +21,7 @@ namespace MauiApp3.Models
                 if (_itemName != value)
                 {
                     _itemName = value;
-                    OnPropertyChanged();  // Notify the UI of property change
+                    OnPropertyChanged();  
                 }
             }
         }
@@ -37,7 +34,7 @@ namespace MauiApp3.Models
                 if (_description != value)
                 {
                     _description = value;
-                    OnPropertyChanged();  // Notify the UI of property change
+                    OnPropertyChanged();  
                 }
             }
         }

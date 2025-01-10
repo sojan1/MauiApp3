@@ -10,9 +10,7 @@ namespace MauiApp3.Models
 {
     public class EditItemViewModel
     {
-        private readonly MainPageViewModel _mainPageViewModel;
-
-        // Properties bound to the UI
+        private  MainPageViewModel _mainPageViewModel;
         public string ItemId { get; set; }
 
         public string ItemName { get; set; }
@@ -26,22 +24,37 @@ namespace MauiApp3.Models
             SaveCommand = new Command(SaveItem);
             CancelCommand = new Command(CancelEditItem);
         }
+
+
         private void SaveItem()
         {
-            var itemToUpdate = _mainPageViewModel.Items.FirstOrDefault(x => x.ItemId == ItemId);
-            if (itemToUpdate != null)
+            try
             {
-                itemToUpdate.ItemName = ItemName;
-                itemToUpdate.Description = Description;
+                var itemToUpdate = _mainPageViewModel.Items.FirstOrDefault(x => x.ItemId == ItemId);
+                if (itemToUpdate != null)
+                {
+                    itemToUpdate.ItemName = ItemName;
+                    itemToUpdate.Description = Description;
+                }
+                Shell.Current.GoToAsync("..");
+            } 
+            catch (Exception ex) 
+            { 
+                Console.WriteLine(ex.ToString());
             }
-            Shell.Current.GoToAsync("..");
-        }
+}
 
 
         private void CancelEditItem()
         {
-            // Navigate back without saving
-            Shell.Current.GoToAsync("..");
+            try
+            {
+                Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

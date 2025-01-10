@@ -2,9 +2,9 @@ using MauiApp3.Models;
 
 namespace MauiApp3
 {
-	public partial class AddItem : ContentPage
+	public partial class frmAddItem : ContentPage
 	{
-        public AddItem(MainPageViewModel mainPageViewModel)
+        public frmAddItem(MainPageViewModel mainPageViewModel)
         {
             InitializeComponent();
             BindingContext = new AddItemViewModel(mainPageViewModel);

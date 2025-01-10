@@ -18,10 +18,9 @@ namespace MauiApp3
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainPageViewModel>();
-
-            // Register AddItem page
-            builder.Services.AddTransient<AddItem>();
-            builder.Services.AddTransient<EditItem>();
+            builder.Services.AddTransient<frmAddItem>();
+            builder.Services.AddTransient<frmEditItem>();
+            
 
 #if DEBUG
             builder.Logging.AddDebug();

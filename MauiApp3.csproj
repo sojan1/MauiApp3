@@ -63,12 +63,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AddItem.xaml">
+	  <MauiXaml Update="frmAddItem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="EditItem.xaml">
+	  <MauiXaml Update="frmEditItem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="frmAddItem.xaml.cs">
+	    <DependentUpon>frmAddItem.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="frmMainPage.xaml.cs">
+	    <DependentUpon>frmMainPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

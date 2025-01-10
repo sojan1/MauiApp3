@@ -5,8 +5,8 @@
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(AddItem), typeof(AddItem));
-            Routing.RegisterRoute(nameof(EditItem), typeof(EditItem));
+            Routing.RegisterRoute(nameof(frmAddItem), typeof(frmAddItem));
+            Routing.RegisterRoute(nameof(frmEditItem), typeof(frmEditItem));
             
         }
     }

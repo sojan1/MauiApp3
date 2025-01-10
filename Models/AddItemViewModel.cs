@@ -6,11 +6,8 @@ namespace MauiApp3.Models
     {
         private readonly MainPageViewModel _mainPageViewModel;
 
-        // Properties bound to the UI
         public string ItemName { get; set; }
         public string Description { get; set; }
-
-        // Command to save the new item
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
@@ -20,30 +17,41 @@ namespace MauiApp3.Models
             SaveCommand = new Command(SaveItem);
             CancelCommand = new Command(CancelAddItem);
         }
-        private void CancelAddItem()
-        {
-            Shell.Current.GoToAsync("..");
-        }
-            
+
         private void SaveItem()
         {
-            if (!string.IsNullOrWhiteSpace(ItemName) && !string.IsNullOrWhiteSpace(Description))
+            try
             {
-                // Create a new item and add it to the collection in MainPageViewModel
-                var newItem = new Item
+                if (!string.IsNullOrWhiteSpace(ItemName) && !string.IsNullOrWhiteSpace(Description))
                 {
-                    ItemId = Guid.NewGuid().ToString(),
-                    ItemName = ItemName,
-                    Description = Description
-                };
+                    var newItem = new Item
+                    {
+                        ItemId = Guid.NewGuid().ToString(),
+                        ItemName = ItemName,
+                        Description = Description
+                    };
 
-                _mainPageViewModel.Items.Add(newItem);
+                    _mainPageViewModel.Items.Add(newItem);
 
-                // Optionally reset the form
-                ItemName = string.Empty;
-                Description = string.Empty;
+                }
+                Shell.Current.GoToAsync("..");
             }
-            Shell.Current.GoToAsync("..");
+            catch (Exception ex) 
+            { 
+                Console.WriteLine(ex.ToString());
+            }
+
+        }
+        private void CancelAddItem()
+        {
+            try
+            {
+                Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
     }

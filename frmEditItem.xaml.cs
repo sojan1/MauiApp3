@@ -1,15 +1,13 @@
 using MauiApp3.Models;
-using System.Xml.Linq;
-
 namespace MauiApp3
 {
-    [QueryProperty("item", "item")]
-    public partial class EditItem : ContentPage
+	[QueryProperty("item", "item")]
+	public partial class frmEditItem : ContentPage
     {
         private Item _item;
         public Item item { get => _item; set => _item = value; }
 
-        public EditItem(MainPageViewModel mainPageViewModel)
+        public frmEditItem(MainPageViewModel mainPageViewModel)
         {
             InitializeComponent();
             BindingContext = new EditItemViewModel(mainPageViewModel);
@@ -20,7 +18,6 @@ namespace MauiApp3
             txtItemName.Text = _item.ItemName;
             txtItemDescription.Text = _item.Description;
         }
-
 
     }
 }
