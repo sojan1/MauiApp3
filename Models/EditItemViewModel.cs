@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace MauiApp3.Models
 {
-    public class EditItemViewModel
+    public class EditItemViewModel : INotifyPropertyChanged
     {
         private  MainPageViewModel _mainPageViewModel;
         public string ItemId { get; set; }
-
         public string ItemName { get; set; }
         public string Description { get; set; }
         public ICommand SaveCommand { get; set; }
@@ -30,11 +26,15 @@ namespace MauiApp3.Models
         {
             try
             {
-                var itemToUpdate = _mainPageViewModel.Items.FirstOrDefault(x => x.ItemId == ItemId);
-                if (itemToUpdate != null)
+                var index = _mainPageViewModel.Items.IndexOf(_mainPageViewModel.Items.FirstOrDefault(x => x.ItemId == ItemId));
+                if (index >= 0)
                 {
-                    itemToUpdate.ItemName = ItemName;
-                    itemToUpdate.Description = Description;
+                    _mainPageViewModel.Items[index] = new Item
+                    {
+                        ItemId = this.ItemId,
+                        ItemName = this.ItemName,
+                        Description = this.Description
+                    };
                 }
                 Shell.Current.GoToAsync("..");
             } 
@@ -55,6 +55,13 @@ namespace MauiApp3.Models
             {
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
