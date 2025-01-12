@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace MauiApp3.Models
 {
-    public class EditItemViewModel : INotifyPropertyChanged
+    public class EditItemViewModel 
     {
         private  MainPageViewModel _mainPageViewModel;
         public string ItemId { get; set; }
@@ -55,13 +55,6 @@ namespace MauiApp3.Models
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
