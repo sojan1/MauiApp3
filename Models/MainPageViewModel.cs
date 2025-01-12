@@ -5,20 +5,9 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 namespace MauiApp3.Models
 {
-    public class MainPageViewModel //: INotifyPropertyChanged
+    public class MainPageViewModel 
     {
         public ObservableCollection<Item> Items { get; set; }
-        //private ObservableCollection<Item> _Items;
- 
-        //public ObservableCollection<Item> Items
-        //{
-        //    get => _Items;
-        //    set
-        //    {
-        //        _Items = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
         public ICommand CommandAddItem { get; set; }
 
         public ICommand CommandEditItem { get; set; }
@@ -64,13 +53,5 @@ namespace MauiApp3.Models
                 Console.WriteLine(ex.ToString());
             }
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
     }
 }
